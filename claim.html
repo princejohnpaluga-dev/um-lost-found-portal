@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Claim Item - UM Lost & Found Portal</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background:#6d1212;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color:#6d1212;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .form-box {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color:#6d1212;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #123b6d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6d1212;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #123b6d;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>UM Lost & Found Portal</h1>
+        <p>University of Mindanao Lost & Found System</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="php/lost.php">Lost Items</a>
+        <a href="php/found.php">Found Items</a>
+        <a href="report.html">Report Item</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h2>Claim an Item</h2>
+
+            <p class="description">
+                Please provide your information and explain why
+                you believe this item belongs to you.
+            </p>
+
+            <form action="php/claim.php" method="POST" enctype="multipart/form-data">
+
+                <input
+                    type="hidden"
+                    name="item_id"
+                    id="item_id"
+                >
+
+                <div class="form-group">
+
+                    <label for="claimant_name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="claimant_name"
+                        name="claimant_name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="contact">
+                        Contact Information
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contact"
+                        name="contact"
+                        placeholder="Enter your contact"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="reason">
+                        Why are you claiming this item?
+                    </label>
+
+                    <textarea
+                        id="reason"
+                        name="reason"
+                        placeholder="Describe details that can help verify ownership"
+                        required
+                    ></textarea>
+
+                </div>
+
+                <div class="form-group">
+
+    <label for="proof_photo">
+        Add Photo for Proof
+    </label>
+
+    <input
+        type="file"
+        id="proof_photo"
+        name="proof_photo"
+        accept="image/*"
+        required
+    >
+
+    <p style="color: #666; margin-top: 5px;">
+        Upload a photo that can help verify your ownership.
+    </p>
+
+</div>
+
+                <button type="submit">
+                    Submit Claim
+                </button>
+
+            </form>
+
+            <a class="back-link" href="index.html">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const itemId = params.get("item_id");
+
+    document.getElementById("item_id").value = itemId;
+</script>
+
+</body>
+</html>

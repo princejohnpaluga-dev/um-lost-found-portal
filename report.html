@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report Item - UM Lost & Found Portal</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #6a2020;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6a2020;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        .form-box {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-box h2 {
+            color: #6a2020;
+            margin-bottom: 10px;
+        }
+
+        .form-box p {
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #123b6d;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #123b6d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background:#6a2020;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #123b6d;
+            font-weight: bold;
+        }
+
+        .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header-content img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+    <div class="header-content">
+
+        <img
+            src="images/logo.png" 
+            alt="UM Lost & Found Logo"
+        >
+
+        <div>
+            <h1>UM Lost & Found Portal</h1>
+            <p>University of Mindanao Lost & Found System</p>
+        </div>
+
+    </div>
+</header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="php/lost.php">Lost Items</a>
+        <a href="php/found.php">Found Items</a>
+        <a href="report.html">Report Item</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="form-box">
+
+            <h2>Report an Item</h2>
+
+            <p>
+                Please provide the details of the lost or found item.
+            </p>
+
+            <form action="php/report.php" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="item_name">Item Name</label>
+
+                    <input
+                        type="text"
+                        id="item_name"
+                        name="item_name"
+                        placeholder="Enter item name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Describe the item"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="item_type">Item Type</label>
+
+                    <select
+                        id="item_type"
+                        name="item_type"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select Item Type --
+                        </option>
+
+                        <option value="lost">
+                            Lost Item
+                        </option>
+
+                        <option value="found">
+                            Found Item
+                        </option>
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="Where was it lost/found?"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="date_reported">Date Reported</label>
+
+                    <input
+                        type="date"
+                        id="date_reported"
+                        name="date_reported"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+
+    <label for="image">
+        Upload Item Photo
+    </label>
+
+    <input
+        type="file"
+        id="image"
+        name="image"
+        accept="image/*"
+        required
+    >
+
+    <p style="color: #666; margin-top: 5px;">
+        Upload a clear photo of the lost or found item.
+    </p>
+
+</div>
+
+                <button type="submit">
+                    Submit Report
+                </button>
+
+            </form>
+
+            <a class="back-link" href="index.html">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
